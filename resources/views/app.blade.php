@@ -7,6 +7,23 @@
 
     <title inertia>{{ config('app.name', 'App Template') }}</title>
 
+    <script>
+        (function () {
+            var theme = 'system';
+            try {
+                theme = localStorage.getItem('app-theme') || 'system';
+            } catch (e) {
+                theme = 'system';
+            }
+
+            var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            var resolvedTheme = theme === 'system' ? (prefersDark ? 'dark' : 'light') : theme;
+            document.documentElement.classList.remove('light', 'dark');
+            document.documentElement.classList.add(resolvedTheme);
+            document.documentElement.style.colorScheme = resolvedTheme;
+        })();
+    </script>
+
     @viteReactRefresh
     @vite('resources/ts/main.tsx')
     @inertiaHead
@@ -15,4 +32,3 @@
     @inertia
 </body>
 </html>
-

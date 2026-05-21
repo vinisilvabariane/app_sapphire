@@ -20,7 +20,7 @@ class JwtAuthenticate
         }
 
         try {
-            $payload = JWT::decode($token, new Key((string) config('services.jwt.secret'), 'HS256'));
+            $payload = JWT::decode($token, new Key($this->jwtSecret(), 'HS256'));
             $user = User::query()->find((int) $payload->sub);
 
             if (! $user) {
@@ -33,5 +33,20 @@ class JwtAuthenticate
         }
 
         return $next($request);
+    }
+
+    private function jwtSecret(): string
+    {
+        $secret = (string) (config('services.jwt.secret') ?: config('app.key'));
+
+        if (str_starts_with($secret, 'base64:')) {
+            $decoded = base64_decode(substr($secret, 7), true);
+
+            if ($decoded !== false) {
+                return $decoded;
+            }
+        }
+
+        return $secret;
     }
 }

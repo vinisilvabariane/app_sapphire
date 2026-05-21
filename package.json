@@ -4,7 +4,7 @@
     "type": "module",
     "scripts": {
         "build": "vite build",
-        "dev": "concurrently -k -n \"Laravel,Vite\" -c \"blue,green\" \"php artisan serve --host=127.0.0.1 --port=8000\" \"vite --host 127.0.0.1\"",
+        "dev": "concurrently -k -n \"Laravel,Vite\" -c \"blue,green\" \"php artisan serve --host=127.0.0.1 --port=8000\" \"vite --host 127.0.0.1 --open http://127.0.0.1:8000\"",
         "vite:dev": "vite --host 127.0.0.1",
         "start": "npm run dev",
         "lint": "eslint \"resources/**/*.{ts,tsx}\"",

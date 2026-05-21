@@ -2,24 +2,24 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\Http\Controllers\Controller;
 use App\Models\User;
 use Firebase\JWT\JWT;
 use Firebase\JWT\Key;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Validation\Rules\Password;
 use Inertia\Inertia;
 use Inertia\Response;
 
-class AuthController extends Controller
+class AuthController extends BaseController
 {
-    public function showLogin(Request $request): RedirectResponse|Response
+    public function index(Request $request): RedirectResponse|Response
     {
         if ($this->resolveUserFromToken($request) !== null) {
             return redirect('/home');
         }
-
         return Inertia::render('auth/Login');
     }
 
@@ -29,14 +29,40 @@ class AuthController extends Controller
             'email' => ['required', 'email'],
             'password' => ['required', 'string'],
         ]);
-
         $user = User::query()->where('email', $credentials['email'])->first();
-
         if (! $user || ! Hash::check($credentials['password'], $user->password)) {
             return back()->withErrors([
                 'email' => 'Credenciais invalidas.',
             ]);
         }
+        $ttl = (int) config('services.jwt.ttl', 3600);
+        $token = $this->generateToken($user, $ttl);
+        return redirect('/home')->cookie(
+            'token',
+            $token,
+            max(1, (int) ceil($ttl / 60)),
+            '/',
+            null,
+            false,
+            true,
+            false,
+            'Lax'
+        );
+    }
+
+    public function register(Request $request): RedirectResponse
+    {
+        $data = $request->validate([
+            'name'                  => ['required', 'string', 'max:255'],
+            'email'                 => ['required', 'email', 'unique:users,email'],
+            'password'              => ['required', 'confirmed', Password::min(8)],
+        ]);
+
+        $user = User::query()->create([
+            'name'     => $data['name'],
+            'email'    => $data['email'],
+            'password' => Hash::make($data['password']),
+        ]);
 
         $ttl = (int) config('services.jwt.ttl', 3600);
         $token = $this->generateToken($user, $ttl);
@@ -72,7 +98,7 @@ class AuthController extends Controller
             'name' => $user->name,
         ];
 
-        return JWT::encode($payload, (string) config('services.jwt.secret'), 'HS256');
+        return JWT::encode($payload, $this->jwtSecret(), 'HS256');
     }
 
     private function resolveUserFromToken(Request $request): ?User
@@ -83,10 +109,25 @@ class AuthController extends Controller
         }
 
         try {
-            $payload = JWT::decode($token, new Key((string) config('services.jwt.secret'), 'HS256'));
+            $payload = JWT::decode($token, new Key($this->jwtSecret(), 'HS256'));
             return User::query()->find((int) $payload->sub);
         } catch (\Throwable) {
             return null;
         }
+    }
+
+    private function jwtSecret(): string
+    {
+        $secret = (string) (config('services.jwt.secret') ?: config('app.key'));
+
+        if (str_starts_with($secret, 'base64:')) {
+            $decoded = base64_decode(substr($secret, 7), true);
+
+            if ($decoded !== false) {
+                return $decoded;
+            }
+        }
+
+        return $secret;
     }
 }
