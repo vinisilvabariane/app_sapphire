@@ -1,10 +1,9 @@
 import { Link } from "@inertiajs/react";
-import { motion } from "framer-motion";
 import { ArrowRight, ChevronRight, Star } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { fadeUp, stagger } from "./landingMotion";
 import { gradientText, primaryGradient } from "./landingStyles";
 import { HeroMockup } from "./HeroMockup";
+import { LandingParticles } from "./LandingParticles";
 
 export function HeroSection() {
     return (
@@ -19,16 +18,11 @@ export function HeroSection() {
                     backgroundSize: "42px 42px",
                 }}
             />
+            <LandingParticles />
 
-            <div className="relative mx-auto grid w-full max-w-screen-2xl items-center gap-14 py-24 lg:grid-cols-[56fr_44fr] xl:gap-16">
-                <motion.div
-                    className="max-w-3xl space-y-9 lg:translate-x-12 xl:translate-x-20"
-                    variants={stagger}
-                    initial={false}
-                    animate="show"
-                >
-                    <motion.a
-                        variants={fadeUp}
+            <div className="relative z-10 mx-auto grid w-full max-w-screen-2xl items-center gap-14 py-24 lg:grid-cols-[56fr_44fr] xl:gap-16">
+                <div className="landing-hero-sequence max-w-3xl space-y-9 lg:translate-x-12 xl:translate-x-20">
+                    <a
                         href="#features"
                         className="group inline-flex items-center gap-2 rounded-full border border-primary/25 bg-primary/5 px-4 py-1.5 text-xs font-medium transition-colors hover:bg-primary/10"
                     >
@@ -37,11 +31,11 @@ export function HeroSection() {
                         </span>
                         <span className="text-muted-foreground">Sapphire 1.0 chegou, veja os recursos</span>
                         <ChevronRight className="h-3 w-3 text-primary transition-transform group-hover:translate-x-0.5" />
-                    </motion.a>
+                    </a>
 
-                    <motion.div variants={fadeUp} className="space-y-2">
+                    <div className="space-y-2">
                         <h1 className="text-5xl font-black leading-[1.08] tracking-normal sm:text-6xl xl:text-[5.15rem]">
-                            Menos esforço.
+                            {"Menos esfor\u00E7o."}
                         </h1>
                         <h1
                             className="text-5xl font-black leading-[1.08] tracking-normal sm:text-6xl xl:text-[5.15rem]"
@@ -49,17 +43,14 @@ export function HeroSection() {
                         >
                             Mais resultado.
                         </h1>
-                    </motion.div>
+                    </div>
 
-                    <motion.p
-                        variants={fadeUp}
-                        className="max-w-xl text-xl leading-relaxed text-muted-foreground"
-                    >
-                        Sapphire centraliza sua operação em uma plataforma moderna, segura e rápida.
-                        Do controle de acesso aos relatórios, tudo em um único lugar.
-                    </motion.p>
+                    <p className="max-w-xl text-xl leading-relaxed text-muted-foreground">
+                        {"Sapphire centraliza sua opera\u00E7\u00E3o em uma plataforma moderna, segura e r\u00E1pida."}
+                        {" Do controle de acesso aos relat\u00F3rios, tudo em um \u00FAnico lugar."}
+                    </p>
 
-                    <motion.div variants={fadeUp} className="flex flex-wrap gap-3 pt-1">
+                    <div className="flex flex-wrap gap-3 pt-1">
                         <Button
                             size="lg"
                             asChild
@@ -67,16 +58,16 @@ export function HeroSection() {
                             style={{ background: primaryGradient }}
                         >
                             <Link href="/login">
-                                Começar agora, grátis
+                                {"Come\u00E7ar agora, gr\u00E1tis"}
                                 <ArrowRight className="ml-2 h-4 w-4" />
                             </Link>
                         </Button>
                         <Button size="lg" variant="outline" className="h-12 px-8 text-base font-semibold">
-                            Ver demonstração
+                            {"Ver demonstra\u00E7\u00E3o"}
                         </Button>
-                    </motion.div>
+                    </div>
 
-                    <motion.div variants={fadeUp} className="flex items-center gap-5 pt-1">
+                    <div className="flex items-center gap-5 pt-1">
                         <div className="flex -space-x-2.5">
                             {["F", "R", "C", "M", "J"].map((letter, index) => (
                                 <div
@@ -100,10 +91,10 @@ export function HeroSection() {
                                 Confiado por <span className="font-semibold text-foreground">+200 empresas</span>
                             </div>
                         </div>
-                    </motion.div>
-                </motion.div>
+                    </div>
+                </div>
 
-                <div className="hidden lg:block">
+                <div className="landing-hero-mockup hidden lg:block">
                     <HeroMockup />
                 </div>
             </div>

@@ -1,5 +1,5 @@
-import { motion } from "framer-motion";
-import { Bell, Gem, TrendingUp } from "lucide-react";
+import { Bell, TrendingUp } from "lucide-react";
+import { LogoMark } from "@/components/brand/LogoMark";
 import { Separator } from "@/components/ui/separator";
 import { mockupActivity, mockupStats } from "../data/landingData";
 
@@ -16,14 +16,13 @@ export function HeroMockup() {
                 }}
             />
 
-            <motion.div
-                className="overflow-hidden rounded-2xl border border-white/10 bg-card shadow-2xl shadow-black/20 ring-1 ring-primary/10"
-                initial={false}
-            >
+            <div className="overflow-hidden rounded-2xl border border-white/10 bg-card shadow-2xl shadow-black/20 ring-1 ring-primary/10">
                 <div className="relative h-64 overflow-hidden">
                     <img
                         src="https://images.unsplash.com/photo-1551434678-e076c223a692?w=1200&auto=format&fit=crop&q=85"
                         alt=""
+                        decoding="async"
+                        fetchPriority="high"
                         className="h-full w-full object-cover"
                     />
                     <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(7,16,33,0.08)_0%,rgba(7,16,33,0.55)_42%,rgba(7,16,33,0.94)_100%)]" />
@@ -32,14 +31,14 @@ export function HeroMockup() {
                     <div className="absolute inset-x-5 bottom-5 space-y-3 text-white">
                         <div className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-3 py-1 text-[10px] font-bold uppercase tracking-widest backdrop-blur-md">
                             <span className="h-1.5 w-1.5 rounded-full bg-[#7ecfff]" />
-                            Operação integrada
+                            {"Opera\u00E7\u00E3o integrada"}
                         </div>
                         <div className="max-w-xs space-y-1">
                             <div className="text-2xl font-black leading-tight">
                                 Controle, dados e equipe no mesmo fluxo.
                             </div>
                             <div className="text-sm leading-relaxed text-white/75">
-                                Visão executiva sem perder o detalhe operacional.
+                                {"Vis\u00E3o executiva sem perder o detalhe operacional."}
                             </div>
                         </div>
                     </div>
@@ -48,7 +47,7 @@ export function HeroMockup() {
                 <div className="space-y-4 p-5">
                     <div className="flex items-center justify-between">
                         <div className="flex items-center gap-2">
-                            <Gem className="h-4 w-4 text-primary" />
+                            <LogoMark className="h-5 w-5" />
                             <span className="text-xs font-bold tracking-wide">Sapphire Dashboard</span>
                         </div>
                         <span className="inline-flex items-center gap-1.5 rounded-full border border-primary/30 bg-primary/10 px-2.5 py-0.5 text-[10px] font-semibold text-primary">
@@ -74,15 +73,12 @@ export function HeroMockup() {
                         <div className="text-[10px] font-semibold uppercase tracking-widest text-muted-foreground">
                             Semana
                         </div>
-                        <div className="flex h-14 items-end gap-1">
+                        <div className="landing-bars flex h-14 items-end gap-1">
                             {bars.map((height, index) => (
-                                <motion.div
+                                <div
                                     key={index}
-                                    className="flex-1 rounded-sm bg-[linear-gradient(to_top,#285295,#5ba3e8)]"
-                                    style={{ height: `${height}%`, transformOrigin: "bottom" }}
-                                    initial={{ scaleY: 0 }}
-                                    animate={{ scaleY: 1 }}
-                                    transition={{ delay: 0.9 + index * 0.07, duration: 0.45 }}
+                                    className="landing-bar flex-1 rounded-sm bg-[linear-gradient(to_top,#285295,#5ba3e8)]"
+                                    style={{ height: `${height}%` }}
                                 />
                             ))}
                         </div>
@@ -116,21 +112,19 @@ export function HeroMockup() {
                         ))}
                     </div>
                 </div>
-            </motion.div>
+            </div>
 
             <FloatingBadge
-                className="-right-4 top-8"
-                delay={1.5}
+                className="landing-floating-badge -right-4 top-8"
                 icon={<Bell className="h-4 w-4 text-primary" />}
                 title="Novo pedido"
                 subtitle="R$ 1.240,00"
             />
             <FloatingBadge
-                className="-left-4 bottom-8"
-                delay={1.7}
+                className="landing-floating-badge landing-floating-badge-delayed -left-4 bottom-8"
                 icon={<TrendingUp className="h-4 w-4 text-emerald-500" />}
-                title="+24% este mês"
-                subtitle="vs. mês anterior"
+                title={"+24% este m\u00EAs"}
+                subtitle={"vs. m\u00EAs anterior"}
                 positive
             />
         </div>
@@ -139,20 +133,16 @@ export function HeroMockup() {
 
 type FloatingBadgeProps = {
     className: string;
-    delay: number;
     icon: React.ReactNode;
     title: string;
     subtitle: string;
     positive?: boolean;
 };
 
-function FloatingBadge({ className, delay, icon, title, subtitle, positive = false }: FloatingBadgeProps) {
+function FloatingBadge({ className, icon, title, subtitle, positive = false }: FloatingBadgeProps) {
     return (
-        <motion.div
+        <div
             className={`absolute flex items-center gap-2.5 rounded-xl border border-border/60 bg-card/95 p-3 shadow-lg shadow-black/10 backdrop-blur-sm ${className}`}
-            initial={{ opacity: 1, scale: 0.96 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ delay, duration: 0.4, type: "spring", stiffness: 200 }}
         >
             <div
                 className={`flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-lg ${
@@ -167,6 +157,6 @@ function FloatingBadge({ className, delay, icon, title, subtitle, positive = fal
                 </div>
                 <div className="text-[10px] text-muted-foreground">{subtitle}</div>
             </div>
-        </motion.div>
+        </div>
     );
 }

@@ -150,3 +150,200 @@
     background: transparent;
   }
 }
+
+@layer components {
+  .landing-section {
+    content-visibility: auto;
+    contain-intrinsic-size: auto 680px;
+  }
+
+  .login-left-panel {
+    animation: login-panel-slide 720ms cubic-bezier(0.25, 0.1, 0.25, 1) both;
+  }
+
+  .landing-particles {
+    display: block;
+    height: 100%;
+    opacity: 0.78;
+    width: 100%;
+  }
+
+  [data-landing-page][data-reveal-ready="true"] [data-landing-reveal] {
+    opacity: 0;
+    transform: translate3d(0, 18px, 0);
+    transition:
+      opacity 520ms cubic-bezier(0.25, 0.1, 0.25, 1),
+      transform 520ms cubic-bezier(0.25, 0.1, 0.25, 1);
+    transition-delay: var(--landing-reveal-delay, 0ms);
+    will-change: opacity, transform;
+  }
+
+  [data-landing-page][data-reveal-ready="true"] [data-landing-reveal][data-visible="true"] {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+    will-change: auto;
+  }
+
+  .landing-stagger > [data-landing-reveal]:nth-child(2) {
+    --landing-reveal-delay: 70ms;
+  }
+
+  .landing-stagger > [data-landing-reveal]:nth-child(3) {
+    --landing-reveal-delay: 140ms;
+  }
+
+  .landing-stagger > [data-landing-reveal]:nth-child(4) {
+    --landing-reveal-delay: 210ms;
+  }
+
+  .landing-stagger > [data-landing-reveal]:nth-child(5) {
+    --landing-reveal-delay: 280ms;
+  }
+
+  .landing-hero-sequence > * {
+    animation: landing-reveal-up 560ms cubic-bezier(0.25, 0.1, 0.25, 1) both;
+  }
+
+  .landing-hero-sequence > :nth-child(2) {
+    animation-delay: 80ms;
+  }
+
+  .landing-hero-sequence > :nth-child(3) {
+    animation-delay: 160ms;
+  }
+
+  .landing-hero-sequence > :nth-child(4) {
+    animation-delay: 240ms;
+  }
+
+  .landing-hero-sequence > :nth-child(5) {
+    animation-delay: 320ms;
+  }
+
+  .landing-hero-mockup {
+    animation: landing-pop-in 520ms cubic-bezier(0.25, 0.1, 0.25, 1) 260ms both;
+  }
+
+  .landing-text-marquee-track {
+    animation: landing-text-marquee 36s linear infinite;
+    will-change: transform;
+  }
+
+  .landing-logo-grid {
+    background-image:
+      linear-gradient(rgba(126, 207, 255, 0.08) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(126, 207, 255, 0.08) 1px, transparent 1px),
+      radial-gradient(circle at 28% 48%, rgba(91, 163, 232, 0.22), transparent 34%);
+    background-size: 56px 56px, 56px 56px, 100% 100%;
+  }
+
+  .landing-bars > .landing-bar {
+    animation: landing-scale-y 420ms cubic-bezier(0.25, 0.1, 0.25, 1) both;
+    transform-origin: bottom;
+  }
+
+  .landing-bars > .landing-bar:nth-child(2) {
+    animation-delay: 60ms;
+  }
+
+  .landing-bars > .landing-bar:nth-child(3) {
+    animation-delay: 120ms;
+  }
+
+  .landing-bars > .landing-bar:nth-child(4) {
+    animation-delay: 180ms;
+  }
+
+  .landing-bars > .landing-bar:nth-child(5) {
+    animation-delay: 240ms;
+  }
+
+  .landing-bars > .landing-bar:nth-child(6) {
+    animation-delay: 300ms;
+  }
+
+  .landing-bars > .landing-bar:nth-child(7) {
+    animation-delay: 360ms;
+  }
+
+  .landing-floating-badge {
+    animation: landing-pop-in 380ms cubic-bezier(0.25, 0.1, 0.25, 1) both;
+  }
+
+  .landing-floating-badge-delayed {
+    animation-delay: 140ms;
+  }
+
+  @keyframes landing-reveal-up {
+    from {
+      opacity: 0;
+      transform: translate3d(0, 18px, 0);
+    }
+
+    to {
+      opacity: 1;
+      transform: translate3d(0, 0, 0);
+    }
+  }
+
+  @keyframes login-panel-slide {
+    from {
+      opacity: 0;
+      transform: translate3d(-18%, 0, 0);
+    }
+
+    to {
+      opacity: 1;
+      transform: translate3d(0, 0, 0);
+    }
+  }
+
+  @keyframes landing-pop-in {
+    from {
+      opacity: 0;
+      transform: scale(0.96);
+    }
+
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  @keyframes landing-scale-y {
+    from {
+      transform: scaleY(0);
+    }
+
+    to {
+      transform: scaleY(1);
+    }
+  }
+
+  @keyframes landing-text-marquee {
+    from {
+      transform: translate3d(0, 0, 0);
+    }
+
+    to {
+      transform: translate3d(-50%, 0, 0);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .landing-hero-sequence > *,
+    .landing-hero-mockup,
+    .landing-text-marquee-track,
+    .landing-bars > .landing-bar,
+    .landing-floating-badge,
+    .login-left-panel,
+    [data-landing-page][data-reveal-ready="true"] [data-landing-reveal] {
+      animation: none;
+      opacity: 1;
+      transform: none;
+      transition: none;
+      will-change: auto;
+    }
+
+  }
+}

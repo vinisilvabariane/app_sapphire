@@ -1,34 +1,25 @@
-import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { features } from "../data/landingData";
-import { fadeUp, stagger } from "./landingMotion";
 import { SectionHeading } from "./SectionHeading";
 
 export function FeaturesSection() {
     return (
-        <section id="features" className="bg-black px-6 py-20">
+        <section id="features" className="landing-section bg-black px-6 py-20">
             <div className="mx-auto max-w-screen-xl space-y-14">
                 <SectionHeading
                     eyebrow="Recursos"
                     title="Uma plataforma."
                     accent="Possibilidades infinitas."
-                    description="Cada detalhe foi pensado para sua equipe trabalhar melhor, sem fricção e sem complexidade."
+                    description={"Cada detalhe foi pensado para sua equipe trabalhar melhor, sem fric\u00E7\u00E3o e sem complexidade."}
                     inverted
                 />
 
-                <motion.div
-                    className="grid gap-4 md:grid-cols-3"
-                    variants={stagger}
-                    initial="hidden"
-                    whileInView="show"
-                    viewport={{ once: true, margin: "-60px" }}
-                >
+                <div className="landing-stagger grid gap-4 md:grid-cols-3">
                     {features.map((feature) => (
-                        <motion.div
+                        <div
+                            data-landing-reveal
                             key={feature.title}
-                            variants={fadeUp}
-                            whileHover={{ y: -5, transition: { duration: 0.2 } }}
                             className={`group space-y-4 rounded-2xl border border-border/60 bg-card p-8 transition-all hover:border-primary/40 hover:shadow-2xl hover:shadow-primary/10 ${
                                 feature.wide ? "md:col-span-2" : ""
                             }`}
@@ -53,9 +44,9 @@ export function FeaturesSection() {
                                     </div>
                                 )
                             )}
-                        </motion.div>
+                        </div>
                     ))}
-                </motion.div>
+                </div>
             </div>
         </section>
     );

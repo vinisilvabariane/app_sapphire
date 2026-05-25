@@ -1,5 +1,3 @@
-import { motion } from "framer-motion";
-import { fadeUp, stagger } from "./landingMotion";
 import { gradientText } from "./landingStyles";
 
 type SectionHeadingProps = {
@@ -18,37 +16,22 @@ export function SectionHeading({
     inverted = false,
 }: SectionHeadingProps) {
     return (
-        <motion.div
-            className="mx-auto max-w-2xl space-y-4 text-center"
-            variants={stagger}
-            initial="hidden"
-            whileInView="show"
-            viewport={{ once: true, margin: "-60px" }}
-        >
-            <motion.p
-                variants={fadeUp}
-                className="text-[11px] font-black uppercase tracking-[0.22em] text-primary"
-            >
+        <div data-landing-reveal className="mx-auto max-w-2xl space-y-4 text-center">
+            <p className="text-[11px] font-black uppercase tracking-[0.22em] text-primary">
                 {eyebrow}
-            </motion.p>
-            <motion.h2
-                variants={fadeUp}
+            </p>
+            <h2
                 className={`text-3xl font-black tracking-tight sm:text-5xl ${
                     inverted ? "text-white" : ""
                 }`}
             >
                 {title} <span style={gradientText}>{accent}</span>
-            </motion.h2>
+            </h2>
             {description && (
-                <motion.p
-                    variants={fadeUp}
-                    className={`text-lg leading-relaxed ${
-                        inverted ? "text-white/60" : "text-muted-foreground"
-                    }`}
-                >
+                <p className={`text-lg leading-relaxed ${inverted ? "text-white/60" : "text-muted-foreground"}`}>
                     {description}
-                </motion.p>
+                </p>
             )}
-        </motion.div>
+        </div>
     );
 }

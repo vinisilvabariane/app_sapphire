@@ -1,13 +1,13 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Link } from "@inertiajs/react";
 import {
-    Gem,
     LayoutGrid,
     Kanban,
     Settings,
     ChevronLeft,
     ChevronRight,
 } from "lucide-react";
+import { LogoMark } from "@/components/brand/LogoMark";
 import { cn } from "@/lib/utils";
 
 type NavItem = {
@@ -27,12 +27,7 @@ type SideNavProps = {
 };
 
 export function SideNav({ currentPath }: SideNavProps) {
-    const [collapsed, setCollapsed] = useState(false);
-
-    useEffect(() => {
-        const saved = localStorage.getItem("sidenav-collapsed");
-        if (saved === "true") setCollapsed(true);
-    }, []);
+    const [collapsed, setCollapsed] = useState(() => localStorage.getItem("sidenav-collapsed") === "true");
 
     const toggle = () =>
         setCollapsed((prev) => {
@@ -50,7 +45,7 @@ export function SideNav({ currentPath }: SideNavProps) {
             {/* Logo */}
             <div className="flex items-center h-14 px-3 border-b border-sidebar-border shrink-0">
                 <Link href="/home" className="flex items-center gap-2 min-w-0 flex-1">
-                    <Gem className="h-5 w-5 text-sidebar-primary shrink-0" />
+                    <LogoMark className="h-7 w-7" />
                     {!collapsed && (
                         <span className="font-bold text-sm tracking-wide text-sidebar-foreground truncate">
                             Sapphire

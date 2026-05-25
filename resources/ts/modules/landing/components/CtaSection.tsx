@@ -1,5 +1,4 @@
 import { Link } from "@inertiajs/react";
-import { motion } from "framer-motion";
 import { ArrowRight, Check } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { assurances } from "../data/landingData";
@@ -8,15 +7,9 @@ import { gradientText, primaryGradient } from "./landingStyles";
 
 export function CtaSection() {
     return (
-        <section className="border-y border-border/40 bg-muted/20 px-6 py-16">
+        <section className="landing-section border-y border-border/40 bg-muted/20 px-6 py-16">
             <div className="mx-auto max-w-screen-xl">
-                <motion.div
-                    className="flex flex-col gap-10 md:flex-row md:items-center md:justify-between"
-                    initial={{ opacity: 1, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true, margin: "-60px" }}
-                    transition={{ duration: 0.65, ease: [0.25, 0.1, 0.25, 1] }}
-                >
+                <div data-landing-reveal className="flex flex-col gap-10 md:flex-row md:items-center md:justify-between">
                     <div className="max-w-2xl space-y-5">
                         <div className="flex items-center gap-3">
                             <BrandMark compact />
@@ -31,7 +24,7 @@ export function CtaSection() {
                         </h2>
 
                         <p className="max-w-xl text-lg leading-relaxed text-muted-foreground">
-                            Comece hoje com uma base limpa para login, JWT, rotas e páginas.
+                            {"Comece hoje com uma base limpa para login, JWT, rotas e p\u00E1ginas."}
                         </p>
                     </div>
 
@@ -43,7 +36,7 @@ export function CtaSection() {
                             asChild
                         >
                             <Link href="/login">
-                                Começar agora
+                                {"Come\u00E7ar agora"}
                                 <ArrowRight className="ml-2 h-4 w-4" />
                             </Link>
                         </Button>
@@ -57,7 +50,7 @@ export function CtaSection() {
                             ))}
                         </div>
                     </div>
-                </motion.div>
+                </div>
             </div>
         </section>
     );

@@ -1,36 +1,27 @@
 import { Link } from "@inertiajs/react";
-import { motion } from "framer-motion";
 import { ArrowRight, Check } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import { plans } from "../data/landingData";
-import { fadeUp, stagger } from "./landingMotion";
 import { gradientText } from "./landingStyles";
 import { SectionHeading } from "./SectionHeading";
 
 export function PricingSection() {
     return (
-        <section id="pricing" className="border-t border-border/40 bg-muted/15 px-6 py-24">
+        <section id="pricing" className="landing-section border-t border-border/40 bg-muted/15 px-6 py-24">
             <div className="mx-auto max-w-screen-xl space-y-14">
                 <SectionHeading
                     eyebrow="Planos"
                     title="Simples e"
                     accent="transparente"
-                    description="Comece grátis. Escale quando precisar. Sem surpresas na fatura."
+                    description={"Comece gr\u00E1tis. Escale quando precisar. Sem surpresas na fatura."}
                 />
 
-                <motion.div
-                    className="grid items-stretch gap-5 md:grid-cols-3"
-                    variants={stagger}
-                    initial="hidden"
-                    whileInView="show"
-                    viewport={{ once: true, margin: "-60px" }}
-                >
+                <div className="landing-stagger grid items-stretch gap-5 md:grid-cols-3">
                     {plans.map((plan) => (
-                        <motion.div
+                        <div
+                            data-landing-reveal
                             key={plan.name}
-                            variants={fadeUp}
-                            whileHover={{ y: -5, transition: { duration: 0.2 } }}
                             className={`relative flex flex-col gap-6 rounded-2xl bg-card p-8 transition-all ${
                                 plan.highlighted
                                     ? "border-2 border-primary shadow-2xl shadow-primary/15"
@@ -91,19 +82,13 @@ export function PricingSection() {
                                     {plan.highlighted && <ArrowRight className="ml-2 h-4 w-4" />}
                                 </Link>
                             </Button>
-                        </motion.div>
+                        </div>
                     ))}
-                </motion.div>
+                </div>
 
-                <motion.p
-                    variants={fadeUp}
-                    initial="hidden"
-                    whileInView="show"
-                    viewport={{ once: true }}
-                    className="text-center text-sm text-muted-foreground"
-                >
-                    Todos os planos incluem 14 dias de teste grátis. Cancele a qualquer momento.
-                </motion.p>
+                <p data-landing-reveal className="text-center text-sm text-muted-foreground">
+                    {"Todos os planos incluem 14 dias de teste gr\u00E1tis. Cancele a qualquer momento."}
+                </p>
             </div>
         </section>
     );

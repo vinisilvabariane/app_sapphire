@@ -1,7 +1,8 @@
 import { router, Link } from "@inertiajs/react";
-import { Gem, LogOut, User } from "lucide-react";
+import { LogOut, User } from "lucide-react";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
+import { LogoMark } from "@/components/brand/LogoMark";
 import {
     DropdownMenu,
     DropdownMenuContent,
@@ -31,7 +32,7 @@ export function Navbar({ user }: NavbarProps) {
         <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
             <div className="mx-auto flex h-14 max-w-screen-2xl items-center px-4 sm:px-6">
                 <Link href="/home" className="flex items-center gap-2 mr-6">
-                    <Gem className="h-5 w-5 text-primary" />
+                    <LogoMark className="h-7 w-7" />
                     <span className="font-bold text-sm tracking-wide">Sapphire</span>
                 </Link>
 

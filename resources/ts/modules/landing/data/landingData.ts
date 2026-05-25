@@ -17,16 +17,7 @@ export const navItems = [
 export const useCases = [
     "Sistema de chamados",
     "Dashboards em tempo real",
-    "Metodologias ágeis",
-    "Gestão de projetos",
-    "Kanban e sprints",
-    "Controle de acesso",
-    "Relatórios automatizados",
-    "KPIs e metas",
-    "Gestão de equipes",
-    "Fluxos de aprovação",
-    "Base de conhecimento",
-    "Auditoria operacional",
+    "Gest\u00E3o de projetos",
 ];
 
 export const stats = [
