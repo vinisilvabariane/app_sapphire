@@ -7,7 +7,7 @@ import { gradientText, primaryGradient } from "./landingStyles";
 
 export function CtaSection() {
     return (
-        <section className="landing-section border-y border-border/40 bg-muted/20 px-6 py-16">
+        <section className="landing-section border-y border-border/40 bg-muted/20 px-6 py-12 lg:py-14">
             <div className="mx-auto max-w-screen-xl">
                 <div data-landing-reveal className="flex flex-col gap-10 md:flex-row md:items-center md:justify-between">
                     <div className="max-w-2xl space-y-5">

@@ -1,4 +1,4 @@
-import { Link } from "@inertiajs/react";
+import { Link, usePage } from "@inertiajs/react";
 import { ChevronRight } from "lucide-react";
 import { ThemeToggle } from "@/components/theme/ThemeToggle";
 import { Button } from "@/components/ui/button";
@@ -7,6 +7,8 @@ import { BrandMark } from "./BrandMark";
 import { primaryGradient } from "./landingStyles";
 
 export function LandingHeader() {
+    const { url } = usePage();
+
     return (
         <header className="fixed top-0 z-50 w-full border-b border-border/40 bg-background/85 backdrop-blur-xl">
             <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-primary/60 to-transparent" />
@@ -16,15 +18,21 @@ export function LandingHeader() {
                 </Link>
 
                 <nav className="hidden items-center justify-center gap-1 rounded-full border border-border/50 bg-muted/30 px-2 py-1.5 md:flex">
-                    {navItems.map((item) => (
-                        <a
-                            key={item.href}
-                            href={item.href}
-                            className="rounded-full px-3.5 py-1 text-sm text-muted-foreground transition-all hover:bg-background/70 hover:text-foreground"
-                        >
-                            {item.label}
-                        </a>
-                    ))}
+                    {navItems.map((item) => {
+                        const isActive = url === item.href;
+
+                        return (
+                            <Link
+                                key={item.href}
+                                href={item.href}
+                                className={`rounded-full px-3.5 py-1 text-sm transition-all hover:bg-background/70 hover:text-foreground ${
+                                    isActive ? "bg-background text-foreground shadow-sm" : "text-muted-foreground"
+                                }`}
+                            >
+                                {item.label}
+                            </Link>
+                        );
+                    })}
                 </nav>
 
                 <div className="flex min-w-0 items-center justify-end gap-2">

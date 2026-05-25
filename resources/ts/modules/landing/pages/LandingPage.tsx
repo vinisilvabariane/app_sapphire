@@ -1,30 +1,29 @@
+import { CommercialIntro } from "../components/CommercialIntro";
 import { CtaSection } from "../components/CtaSection";
-import { FeaturesSection } from "../components/FeaturesSection";
-import { HeroSection } from "../components/HeroSection";
-import { HowItWorksSection } from "../components/HowItWorksSection";
-import { LandingFooter } from "../components/LandingFooter";
-import { LandingHeader } from "../components/LandingHeader";
-import { PricingSection } from "../components/PricingSection";
+import { LandingLayout } from "../components/LandingLayout";
+import { PinnedStorySection } from "../components/PinnedStorySection";
 import { ShowcaseSection } from "../components/ShowcaseSection";
-import { TestimonialsSection } from "../components/TestimonialsSection";
 import { UseCasesMarquee } from "../components/UseCasesMarquee";
-import { useLandingEffects } from "../components/useLandingEffects";
+import { pinnedStories } from "../data/landingData";
 
 export default function LandingPage() {
-    useLandingEffects();
-
     return (
-        <div data-landing-page className="min-h-screen overflow-x-hidden bg-background text-foreground">
-            <LandingHeader />
-            <HeroSection />
+        <LandingLayout>
+            <CommercialIntro
+                eyebrow="Sapphire OS"
+                title="Opera\u00E7\u00E3o clara."
+                accent="Time em movimento."
+                description="Uma plataforma comercial para organizar chamados, dashboards e projetos com a velocidade que times modernos esperam."
+            />
             <UseCasesMarquee />
+            <PinnedStorySection
+                eyebrow="O sistema"
+                title="O scroll prende. A opera\u00E7\u00E3o aparece."
+                description="A narrativa mostra como o Sapphire sai da promessa e chega no fluxo real de trabalho."
+                items={pinnedStories.home}
+            />
             <ShowcaseSection />
-            <FeaturesSection />
-            <HowItWorksSection />
-            <TestimonialsSection />
-            <PricingSection />
             <CtaSection />
-            <LandingFooter />
-        </div>
+        </LandingLayout>
     );
 }

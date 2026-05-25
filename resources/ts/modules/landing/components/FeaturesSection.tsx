@@ -5,7 +5,7 @@ import { SectionHeading } from "./SectionHeading";
 
 export function FeaturesSection() {
     return (
-        <section id="features" className="landing-section bg-black px-6 py-20">
+        <section id="features" className="landing-section bg-black px-6 py-14 lg:py-16">
             <div className="mx-auto max-w-screen-xl space-y-14">
                 <SectionHeading
                     eyebrow="Recursos"

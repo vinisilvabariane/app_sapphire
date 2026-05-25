@@ -4,7 +4,7 @@ import { SectionHeading } from "./SectionHeading";
 
 export function TestimonialsSection() {
     return (
-        <section id="testimonials" className="landing-section px-6 py-24">
+        <section id="testimonials" className="landing-section px-6 py-14 lg:py-16">
             <div className="mx-auto max-w-screen-xl space-y-14">
                 <SectionHeading eyebrow="Depoimentos" title="Quem usa," accent="recomenda" />
 

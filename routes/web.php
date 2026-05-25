@@ -19,10 +19,30 @@ $userPayload = static function ($user): ?array {
     ];
 };
 
-Route::get('/', function (Request $request) {
-    $response = Inertia::render('landing/LandingPage')->toResponse($request);
+$renderPublicLanding = static function (Request $request, string $component) {
+    $response = Inertia::render($component)->toResponse($request);
     $response->headers->clearCookie('token', '/');
     return $response;
+};
+
+Route::get('/', function (Request $request) use ($renderPublicLanding) {
+    return $renderPublicLanding($request, 'landing/LandingPage');
+});
+
+Route::get('/recursos', function (Request $request) use ($renderPublicLanding) {
+    return $renderPublicLanding($request, 'landing/FeaturesPage');
+});
+
+Route::get('/planos', function (Request $request) use ($renderPublicLanding) {
+    return $renderPublicLanding($request, 'landing/PricingPage');
+});
+
+Route::get('/como-funciona', function (Request $request) use ($renderPublicLanding) {
+    return $renderPublicLanding($request, 'landing/HowItWorksPage');
+});
+
+Route::get('/depoimentos', function (Request $request) use ($renderPublicLanding) {
+    return $renderPublicLanding($request, 'landing/TestimonialsPage');
 });
 
 Route::get('/home', function () use ($userPayload) {

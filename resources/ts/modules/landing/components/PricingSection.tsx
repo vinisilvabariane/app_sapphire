@@ -8,7 +8,7 @@ import { SectionHeading } from "./SectionHeading";
 
 export function PricingSection() {
     return (
-        <section id="pricing" className="landing-section border-t border-border/40 bg-muted/15 px-6 py-24">
+        <section id="pricing" className="landing-section border-t border-border/40 bg-muted/15 px-6 py-14 lg:py-16">
             <div className="mx-auto max-w-screen-xl space-y-14">
                 <SectionHeading
                     eyebrow="Planos"
