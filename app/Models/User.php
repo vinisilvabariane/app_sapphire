@@ -15,6 +15,8 @@ class User extends Authenticatable
         'password',
         'google_id',
         'facebook_id',
+        'onboarded_at',
+        'last_login_at',
     ];
 
     protected $hidden = [
@@ -25,6 +27,8 @@ class User extends Authenticatable
     {
         return [
             'password' => 'hashed',
+            'onboarded_at' => 'datetime',
+            'last_login_at' => 'datetime',
         ];
     }
 }

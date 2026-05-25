@@ -4,7 +4,12 @@ import { TopBar } from "./TopBar";
 
 type DashboardLayoutProps = {
     children: React.ReactNode;
-    user?: { name?: string; email?: string };
+    user?: {
+        email?: string;
+        last_login_at?: string | null;
+        name?: string;
+        onboarded_at?: string | null;
+    };
     title?: string;
 };
 

@@ -35,6 +35,9 @@ class AuthController extends BaseController
                 'email' => 'Credenciais invalidas.',
             ]);
         }
+
+        $user->forceFill(['last_login_at' => now()])->save();
+
         $ttl = (int) config('services.jwt.ttl', 3600);
         $token = $this->generateToken($user, $ttl);
         return redirect('/home')->cookie(

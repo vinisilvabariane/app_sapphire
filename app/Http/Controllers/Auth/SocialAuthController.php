@@ -55,6 +55,8 @@ class SocialAuthController extends BaseController
             ]);
         }
 
+        $user->forceFill(['last_login_at' => now()])->save();
+
         $ttl = (int) config('services.jwt.ttl', 3600);
         $token = $this->generateToken($user, $ttl);
 
