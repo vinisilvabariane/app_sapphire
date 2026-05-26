@@ -17,26 +17,41 @@ type PinnedStorySectionProps = {
 
 export function PinnedStorySection({ eyebrow, title, description, items }: PinnedStorySectionProps) {
     return (
-        <section className="bg-background px-6 py-14 lg:py-16">
-            <div className="mx-auto grid max-w-screen-xl items-start gap-12 lg:grid-cols-[420px_1px_minmax(0,1fr)] lg:gap-12 xl:grid-cols-[460px_1px_minmax(0,1fr)] xl:gap-16">
-                <aside className="min-w-0 lg:sticky lg:top-28">
-                    <div className="space-y-6">
-                        <span className="text-xs font-black uppercase tracking-[0.24em] text-primary">{eyebrow}</span>
-                        <h2 className="text-4xl font-black uppercase leading-[0.98] tracking-normal sm:text-5xl lg:text-6xl">
-                            {title}
-                        </h2>
-                        <p className="max-w-md text-lg leading-relaxed text-muted-foreground">{description}</p>
+        <section className="landing-section isolate overflow-visible bg-background px-6 py-16 lg:py-24">
+            <div className="mx-auto grid max-w-screen-xl items-start gap-12 lg:grid-cols-[minmax(460px,0.95fr)_minmax(300px,0.65fr)] lg:gap-16 xl:grid-cols-[minmax(540px,1fr)_minmax(320px,0.62fr)] xl:gap-20">
+                <aside className="relative z-40 min-w-0 lg:sticky lg:top-20 lg:h-[calc(100vh-6rem)] lg:self-start">
+                    <div className="relative flex h-full min-h-[540px] overflow-hidden rounded-[2rem] bg-black p-8 text-white shadow-2xl shadow-black/25 sm:p-10 lg:p-12">
+                        <div className="absolute inset-x-0 top-0 h-1 bg-primary" aria-hidden="true" />
+                        <div
+                            className="absolute inset-0 opacity-[0.18]"
+                            aria-hidden="true"
+                            style={{
+                                backgroundImage:
+                                    "linear-gradient(rgba(255,255,255,.42) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.42) 1px, transparent 1px)",
+                                backgroundPosition: "0 0",
+                                backgroundSize: "44px 44px",
+                            }}
+                        />
+                        <div className="relative flex min-h-0 w-full flex-col justify-center gap-8 lg:gap-10">
+                            <span className="inline-flex w-fit rounded-full border border-white/15 bg-white/10 px-3 py-1 text-xs font-black uppercase tracking-[0.24em] text-white/75">
+                                {eyebrow}
+                            </span>
+                            <div className="space-y-6">
+                                <h2 className="max-w-[11ch] text-5xl font-black uppercase leading-[0.94] tracking-normal sm:text-6xl lg:text-[4rem] xl:text-7xl">
+                                    {title}
+                                </h2>
+                                <p className="max-w-lg text-lg leading-relaxed text-white/70">{description}</p>
+                            </div>
+                        </div>
                     </div>
                 </aside>
 
-                <div className="hidden min-h-full bg-border/60 lg:block" aria-hidden="true" />
-
-                <div className="min-w-0 space-y-5 overflow-hidden">
+                <div className="relative z-10 min-w-0 space-y-5 lg:pt-20">
                     {items.map((item, index) => (
                         <article
                             data-landing-reveal
                             key={item.title}
-                            className="commercial-pin-card group rounded-[1.75rem] border border-border/70 bg-card p-6 shadow-2xl shadow-black/5 transition-colors hover:border-primary/40 sm:p-8"
+                            className="commercial-pin-card group rounded-[1.75rem] border border-border/70 bg-card p-6 shadow-xl shadow-black/5 transition-colors hover:border-primary/40 sm:p-8"
                         >
                             <div className="grid min-w-0 gap-6 md:grid-cols-[minmax(0,1fr)_170px] md:items-center xl:grid-cols-[minmax(0,1fr)_210px]">
                                 <div className="min-w-0 space-y-6">

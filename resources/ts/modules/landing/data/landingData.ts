@@ -9,20 +9,17 @@ import {
     Gauge,
     LayoutDashboard,
     LockKeyhole,
-    MessageSquareText,
     MousePointerClick,
     Rocket,
     Shield,
     SlidersHorizontal,
-    Star,
     Users,
 } from "lucide-react";
 
 export const navItems = [
-    { label: "Recursos", href: "/recursos" },
     { label: "Planos", href: "/planos" },
-    { label: "Como funciona", href: "/como-funciona" },
-    { label: "Depoimentos", href: "/depoimentos" },
+    { label: "Recursos", href: "/recursos" },
+    { label: "FAQ", href: "/perguntas-frequentes" },
 ];
 
 export const useCases = [
@@ -86,33 +83,6 @@ export const steps = [
     },
 ];
 
-export const testimonials = [
-    {
-        name: "Fernanda Castro",
-        role: "CTO",
-        company: "TechCorp",
-        quote:
-            "O Sapphire reduziu o tempo da nossa equipe de opera\u00E7\u00F5es. A interface ficou limpa e r\u00E1pida.",
-        photo: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=96&h=96&fit=crop&auto=format&q=80",
-    },
-    {
-        name: "Rafael Mendes",
-        role: "CEO",
-        company: "StartupXP",
-        quote:
-            "O onboarding foi direto ao ponto. Conseguimos validar o fluxo de login e come\u00E7ar a evoluir o produto.",
-        photo: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=96&h=96&fit=crop&auto=format&q=80",
-    },
-    {
-        name: "Camila Nunes",
-        role: "Head of Ops",
-        company: "LogisTech",
-        quote:
-            "A base com JWT, rotas separadas e Inertia deixou o projeto pronto para crescer com organiza\u00E7\u00E3o.",
-        photo: "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=96&h=96&fit=crop&auto=format&q=80",
-    },
-];
-
 export const plans = [
     {
         name: "Free",
@@ -165,6 +135,39 @@ export const assurances = [
     { label: "Frontend modular", icon: LayoutDashboard },
 ];
 
+export const faqs = [
+    {
+        question: "O Sapphire substitui planilhas e ferramentas separadas?",
+        answer:
+            "Ele centraliza chamados, indicadores e fluxos de trabalho para reduzir controle paralelo. A ideia \u00E9 deixar a opera\u00E7\u00E3o vis\u00EDvel em um lugar s\u00F3, sem depender de atualiza\u00E7\u00F5es manuais constantes.",
+    },
+    {
+        question: "Consigo come\u00E7ar pequeno e evoluir depois?",
+        answer:
+            "Sim. A estrutura foi pensada para validar o fluxo inicial e crescer com novos m\u00F3dulos, permiss\u00F5es, dashboards e integra\u00E7\u00F5es conforme o time amadurece.",
+    },
+    {
+        question: "Como funciona a seguran\u00E7a de acesso?",
+        answer:
+            "A base usa autentica\u00E7\u00E3o com JWT em cookie HttpOnly e rotas protegidas. Isso cria um ponto de partida mais previs\u00EDvel para evoluir pap\u00E9is, auditoria e permiss\u00F5es.",
+    },
+    {
+        question: "O sistema serve para opera\u00E7\u00F5es com mais de uma equipe?",
+        answer:
+            "Serve. Os fluxos consideram usu\u00E1rios, respons\u00E1veis, status e vis\u00F5es de acompanhamento, ajudando gest\u00E3o e execu\u00E7\u00E3o a trabalharem com o mesmo contexto.",
+    },
+    {
+        question: "Preciso configurar tudo antes de usar?",
+        answer:
+            "N\u00E3o. O caminho ideal \u00E9 come\u00E7ar pelo essencial, validar a rotina e ampliar configura\u00E7\u00F5es quando houver clareza sobre prioridades, acessos e indicadores.",
+    },
+    {
+        question: "O Sapphire pode se conectar com APIs e outros sistemas?",
+        answer:
+            "A arquitetura separa frontend, rotas e base de API, deixando espa\u00E7o para integra\u00E7\u00F5es conforme o produto evolui.",
+    },
+];
+
 export const pinnedStories = {
     home: [
         {
@@ -187,6 +190,27 @@ export const pinnedStories = {
             description:
                 "Arquitetura modular, autentica\u00E7\u00E3o e rotas separadas deixam espa\u00E7o para novos m\u00F3dulos sem bagun\u00E7ar a experi\u00EAncia.",
             icon: Rocket,
+        },
+        {
+            eyebrow: "Priorize",
+            title: "Demandas importantes aparecem primeiro",
+            description:
+                "Filtros, status e respons\u00E1veis ajudam o time a entender o que precisa de a\u00E7\u00E3o agora e o que pode esperar.",
+            icon: Gauge,
+        },
+        {
+            eyebrow: "Colabore",
+            title: "Cada pessoa trabalha com o mesmo contexto",
+            description:
+                "Hist\u00F3rico, coment\u00E1rios e movimenta\u00E7\u00F5es reduzem retrabalho entre gest\u00E3o, atendimento e execu\u00E7\u00E3o.",
+            icon: Users,
+        },
+        {
+            eyebrow: "Proteja",
+            title: "Controle de acesso acompanha a opera\u00E7\u00E3o",
+            description:
+                "A base de seguran\u00E7a permite evoluir permiss\u00F5es, auditoria e pap\u00E9is sem perder previsibilidade.",
+            icon: Shield,
         },
     ],
     features: [
@@ -256,29 +280,6 @@ export const pinnedStories = {
             description:
                 "A opera\u00E7\u00E3o deixa rastros claros para tomada de decis\u00E3o, prioriza\u00E7\u00E3o e melhoria cont\u00EDnua.",
             icon: ChartNoAxesCombined,
-        },
-    ],
-    testimonials: [
-        {
-            eyebrow: "Confian\u00E7a",
-            title: "Depoimentos com foco em resultado",
-            description:
-                "Os relatos refor\u00E7am velocidade, organiza\u00E7\u00E3o e clareza para equipes que precisam operar melhor.",
-            icon: MessageSquareText,
-        },
-        {
-            eyebrow: "Prova",
-            title: "Sinais comerciais para reduzir obje\u00E7\u00E3o",
-            description:
-                "Avalia\u00E7\u00F5es, cargos e contexto de uso ajudam o visitante a entender se o Sapphire serve para a realidade dele.",
-            icon: Star,
-        },
-        {
-            eyebrow: "Mercado",
-            title: "Hist\u00F3rias conectadas ao uso di\u00E1rio",
-            description:
-                "Cada fala aponta para um ganho pr\u00E1tico: onboarding, base t\u00E9cnica, rotas limpas e opera\u00E7\u00E3o mais fluida.",
-            icon: Users,
         },
     ],
 };

@@ -7,7 +7,7 @@ export function HowItWorksSection() {
         <section id="how" className="landing-section border-y border-border/40 bg-muted/15 px-6 py-14 lg:py-16">
             <div className="mx-auto max-w-screen-xl space-y-16">
                 <SectionHeading
-                    eyebrow="Como funciona"
+                    eyebrow="Recursos"
                     title="Do zero ao operacional"
                     accent="em minutos"
                 />

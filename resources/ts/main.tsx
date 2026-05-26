@@ -9,6 +9,7 @@ import "../css/app.css";
 import { ThemeProvider } from "@/components/theme/ThemeProvider";
 
 createInertiaApp({
+    title: (title) => (title ? `${title} | Sapphire OS` : "Sapphire OS"),
     resolve: async (name) => {
         const pages = import.meta.glob<{
             default: ComponentType<Record<string, unknown>>;
