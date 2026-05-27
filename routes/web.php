@@ -15,6 +15,7 @@ $userPayload = static function ($user): ?array {
         'email' => $user->email,
         'created_at' => $user->created_at?->toIso8601String(),
         'onboarded_at' => $user->onboarded_at?->toIso8601String(),
+        'show_tutorial' => (bool) $user->show_tutorial,
         'last_login_at' => $user->last_login_at?->toIso8601String(),
     ];
 };
@@ -48,7 +49,7 @@ Route::get('/home', function () use ($userPayload) {
 
     return Inertia::render('home/HomePage', [
         'user' => $userPayload($user),
-        'showOnboarding' => $user?->onboarded_at === null,
+        'showTutorial' => (bool) $user?->show_tutorial,
     ]);
 })->middleware('jwt.auth');
 
@@ -70,6 +71,7 @@ Route::get('/settings', function () use ($userPayload) {
             'created_at' => $user?->created_at?->toIso8601String(),
             'last_login_at' => $user?->last_login_at?->toIso8601String(),
             'onboarded_at' => $user?->onboarded_at?->toIso8601String(),
+            'show_tutorial' => (bool) $user?->show_tutorial,
         ],
     ]);
 })->middleware('jwt.auth');
@@ -90,6 +92,7 @@ Route::post('/settings/profile', function (Request $request) {
 Route::post('/onboarding/complete', function (Request $request) {
     $request->attributes->get('jwt_user')?->forceFill([
         'onboarded_at' => now(),
+        'show_tutorial' => false,
     ])->save();
 
     return back();
@@ -98,6 +101,7 @@ Route::post('/onboarding/complete', function (Request $request) {
 Route::post('/settings/onboarding/reset', function (Request $request) {
     $request->attributes->get('jwt_user')?->forceFill([
         'onboarded_at' => null,
+        'show_tutorial' => true,
     ])->save();
 
     return redirect('/home');

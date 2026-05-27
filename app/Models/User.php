@@ -16,6 +16,7 @@ class User extends Authenticatable
         'google_id',
         'facebook_id',
         'onboarded_at',
+        'show_tutorial',
         'last_login_at',
     ];
 
@@ -28,6 +29,7 @@ class User extends Authenticatable
         return [
             'password' => 'hashed',
             'onboarded_at' => 'datetime',
+            'show_tutorial' => 'boolean',
             'last_login_at' => 'datetime',
         ];
     }

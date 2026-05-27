@@ -45,8 +45,8 @@ export function ProcessJourneySection() {
                     </div>
                 </div>
 
-                <div data-landing-reveal className="rounded-[2rem] border border-white/10 bg-white/[0.06] p-4 shadow-2xl shadow-black/30 backdrop-blur">
-                    <div className="rounded-[1.5rem] bg-black/70 p-5 ring-1 ring-white/10">
+                <div data-landing-reveal className="rounded-lg border border-white/10 bg-white/[0.06] p-4 shadow-2xl shadow-black/30 backdrop-blur">
+                    <div className="rounded-lg bg-black/70 p-5 ring-1 ring-white/10">
                         <div className="mb-6 flex items-center justify-between gap-4 border-b border-white/10 pb-4">
                             <div>
                                 <div className="text-xs font-black uppercase tracking-[0.22em] text-primary">
@@ -55,7 +55,7 @@ export function ProcessJourneySection() {
                                 <div className="mt-1 text-2xl font-black">Fluxo guiado</div>
                             </div>
                             <div
-                                className="flex h-11 w-11 items-center justify-center rounded-full text-white shadow-lg shadow-primary/25"
+                                className="flex h-11 w-11 items-center justify-center rounded-lg text-white shadow-lg shadow-primary/25"
                                 style={{ background: primaryGradient }}
                                 aria-hidden="true"
                             >
@@ -67,9 +67,9 @@ export function ProcessJourneySection() {
                             {steps.map((step, index) => (
                                 <article
                                     key={step.number}
-                                    className="grid grid-cols-[2.75rem_minmax(0,1fr)] gap-4 rounded-2xl border border-white/10 bg-white/[0.05] p-4"
+                                    className="grid grid-cols-[2.75rem_minmax(0,1fr)] gap-4 rounded-lg border border-white/10 bg-white/[0.05] p-4"
                                 >
-                                    <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-primary/15 text-sm font-black text-primary">
+                                    <div className="flex h-11 w-11 items-center justify-center rounded-lg bg-primary/15 text-sm font-black text-primary">
                                         {step.number}
                                     </div>
                                     <div className="min-w-0">

@@ -17,21 +17,21 @@ export function FeatureCommandSection() {
                     </p>
                     <div className="flex flex-wrap gap-2">
                         {useCases.map((item) => (
-                            <span key={item} className="rounded-full border border-border bg-muted/40 px-4 py-2 text-sm font-bold">
+                            <span key={item} className="rounded-lg border border-border bg-muted/40 px-4 py-2 text-sm font-bold">
                                 {item}
                             </span>
                         ))}
                     </div>
                 </div>
 
-                <div data-landing-reveal className="rounded-[2rem] bg-black p-4 text-white shadow-2xl shadow-primary/10">
-                    <div className="rounded-[1.5rem] border border-white/10 bg-[radial-gradient(circle_at_20%_0%,rgba(91,163,232,0.28),transparent_34%),#050914] p-5">
+                <div data-landing-reveal className="rounded-lg bg-black p-4 text-white shadow-2xl shadow-primary/10">
+                    <div className="rounded-lg border border-white/10 bg-[radial-gradient(circle_at_20%_0%,rgba(91,163,232,0.28),transparent_34%),#050914] p-5">
                         <div className="mb-8 flex items-center justify-between border-b border-white/10 pb-4">
                             <div>
                                 <div className="text-xs font-black uppercase tracking-[0.22em] text-primary">Live workspace</div>
                                 <div className="mt-1 text-2xl font-black">Sapphire Control</div>
                             </div>
-                            <Button className="rounded-full bg-white text-primary hover:bg-white/90" asChild>
+                            <Button className="rounded-lg bg-white text-primary hover:bg-white/90" asChild>
                                 <Link href="/login">
                                     Testar <ArrowRight className="ml-2 h-4 w-4" />
                                 </Link>
@@ -42,7 +42,7 @@ export function FeatureCommandSection() {
                             {features.map((feature, index) => (
                                 <div
                                     key={feature.title}
-                                    className={`rounded-2xl border border-white/10 bg-white/[0.06] p-5 ${
+                                    className={`rounded-lg border border-white/10 bg-white/[0.06] p-5 ${
                                         index === 0 ? "sm:col-span-2" : ""
                                     }`}
                                 >

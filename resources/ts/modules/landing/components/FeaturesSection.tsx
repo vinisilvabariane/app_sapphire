@@ -20,11 +20,11 @@ export function FeaturesSection() {
                         <div
                             data-landing-reveal
                             key={feature.title}
-                            className={`group space-y-4 rounded-2xl border border-border/60 bg-card p-8 transition-all hover:border-primary/40 hover:shadow-2xl hover:shadow-primary/10 ${
+                            className={`group space-y-4 rounded-lg border border-border/60 bg-card p-8 transition-all hover:border-primary/40 hover:shadow-2xl hover:shadow-primary/10 ${
                                 feature.wide ? "md:col-span-2" : ""
                             }`}
                         >
-                            <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-primary/10 transition-colors group-hover:bg-primary/20">
+                            <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-primary/10 transition-colors group-hover:bg-primary/20">
                                 <feature.icon className="h-6 w-6 text-primary" />
                             </div>
                             <h3 className="text-xl font-bold">{feature.title}</h3>

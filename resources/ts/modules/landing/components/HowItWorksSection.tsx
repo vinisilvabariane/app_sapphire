@@ -16,7 +16,7 @@ export function HowItWorksSection() {
                     {steps.map((step, index) => (
                         <div data-landing-reveal key={step.number} className="relative space-y-5">
                             <div className="flex items-center gap-4">
-                                <div className="flex h-14 w-14 flex-shrink-0 items-center justify-center rounded-2xl border-2 border-primary/30 bg-primary/10">
+                                <div className="flex h-14 w-14 flex-shrink-0 items-center justify-center rounded-lg border-2 border-primary/30 bg-primary/10">
                                     <span className="text-lg font-black" style={gradientText}>
                                         {step.number}
                                     </span>

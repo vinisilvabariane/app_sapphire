@@ -119,7 +119,7 @@ export function CommercialIntro({
                     <div className="flex flex-wrap gap-3">
                         <Button
                             size="lg"
-                            className="h-12 rounded-full px-8 text-sm font-black uppercase tracking-wide shadow-2xl shadow-primary/25"
+                            className="h-12 rounded-lg px-8 text-sm font-black uppercase tracking-wide shadow-2xl shadow-primary/25"
                             style={{ background: primaryGradient }}
                             asChild
                         >
@@ -131,7 +131,7 @@ export function CommercialIntro({
                         <Button
                             size="lg"
                             variant="outline"
-                            className="h-12 rounded-full border-white/20 bg-white/5 px-8 text-sm font-black uppercase tracking-wide text-white hover:bg-white/10 hover:text-white"
+                            className="h-12 rounded-lg border-white/20 bg-white/5 px-8 text-sm font-black uppercase tracking-wide text-white hover:bg-white/10 hover:text-white"
                             asChild
                         >
                             <Link href="/planos">Ver planos</Link>

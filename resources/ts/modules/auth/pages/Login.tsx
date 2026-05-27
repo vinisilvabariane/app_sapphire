@@ -33,7 +33,7 @@ export default function Login() {
                 />
 
                 <div
-                    className="pointer-events-none absolute left-1/2 top-1/2 h-[520px] w-[520px] -translate-x-1/2 -translate-y-[55%] rounded-full"
+                    className="pointer-events-none absolute left-1/2 top-1/2 h-[520px] w-[520px] -translate-x-1/2 -translate-y-[55%] rounded-lg"
                     style={{
                         background:
                             "radial-gradient(circle, rgba(91,163,232,0.22) 0%, rgba(40,82,149,0.10) 45%, transparent 70%)",
@@ -56,13 +56,13 @@ export default function Login() {
                     <div className="flex flex-1 flex-col items-center justify-center gap-10">
                         <div className="relative flex items-center justify-center">
                             <div
-                                className="absolute h-56 w-56 rounded-full blur-3xl"
+                                className="absolute h-56 w-56 rounded-lg blur-3xl"
                                 style={{
                                     background: "radial-gradient(circle, rgba(91,163,232,0.40) 0%, transparent 70%)",
                                 }}
                             />
                             <div
-                                className="relative flex h-36 w-36 items-center justify-center rounded-[2.5rem]"
+                                className="relative flex h-36 w-36 items-center justify-center rounded-lg"
                                 style={{
                                     background:
                                         "linear-gradient(145deg, rgba(91,163,232,0.15) 0%, rgba(40,82,149,0.25) 100%)",
@@ -100,7 +100,7 @@ export default function Login() {
                             {FEATURES.map((feature) => (
                                 <div
                                     key={feature}
-                                    className="flex items-center gap-3 rounded-xl px-4 py-3 text-sm text-blue-100/80"
+                                    className="flex items-center gap-3 rounded-lg px-4 py-3 text-sm text-blue-100/80"
                                     style={{
                                         background: "rgba(255,255,255,0.04)",
                                         border: "1px solid rgba(255,255,255,0.07)",

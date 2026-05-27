@@ -55,7 +55,7 @@ export default function LoginForm() {
                     onChange={(e) => setData("email", e.target.value)}
                     aria-invalid={!!errors.email}
                     autoComplete="email"
-                    className="h-11 rounded-xl bg-muted/40 border-border/60 focus:bg-background transition-colors"
+                    className="h-11 rounded-lg bg-muted/40 border-border/60 focus:bg-background transition-colors"
                     required
                 />
                 {errors.email && (
@@ -76,13 +76,13 @@ export default function LoginForm() {
                         onChange={(e) => setData("password", e.target.value)}
                         aria-invalid={!!errors.password}
                         autoComplete="current-password"
-                        className="h-11 rounded-xl bg-muted/40 border-border/60 focus:bg-background transition-colors pr-11"
+                        className="h-11 rounded-lg bg-muted/40 border-border/60 focus:bg-background transition-colors pr-11"
                         required
                     />
                     <button
                         type="button"
                         onClick={() => setShowPassword((v) => !v)}
-                        className="absolute right-3 top-1/2 flex h-8 w-8 -translate-y-1/2 items-center justify-center rounded-md text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
+                        className="absolute right-3 top-1/2 flex h-8 w-8 -translate-y-1/2 items-center justify-center rounded-lg text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
                         aria-label={showPassword ? "Ocultar senha" : "Mostrar senha"}
                     >
                         {showPassword ? (
@@ -99,7 +99,7 @@ export default function LoginForm() {
 
             <Button
                 type="submit"
-                className="h-11 w-full rounded-xl font-bold shadow-lg shadow-primary/20 mt-2"
+                className="h-11 w-full rounded-lg font-bold shadow-lg shadow-primary/20 mt-2"
                 style={{
                     background:
                         "linear-gradient(135deg, #3a6cbd 0%, #285295 60%, #1a3a6e 100%)",
@@ -121,7 +121,7 @@ export default function LoginForm() {
                     <Button
                         type="button"
                         variant="outline"
-                        className="h-11 w-full rounded-xl border-border/60 bg-muted/40 hover:bg-muted gap-2"
+                        className="h-11 w-full rounded-lg border-border/60 bg-muted/40 hover:bg-muted gap-2"
                     >
                         <GoogleIcon />
                         Google
@@ -131,7 +131,7 @@ export default function LoginForm() {
                     <Button
                         type="button"
                         variant="outline"
-                        className="h-11 w-full rounded-xl border-border/60 bg-muted/40 hover:bg-muted gap-2"
+                        className="h-11 w-full rounded-lg border-border/60 bg-muted/40 hover:bg-muted gap-2"
                     >
                         <FacebookIcon />
                         Facebook

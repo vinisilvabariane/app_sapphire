@@ -20,7 +20,7 @@ export function PricingHeroSection() {
                     </p>
                 </div>
 
-                <aside data-landing-reveal className="rounded-[2rem] border border-primary/25 bg-card p-7 shadow-2xl shadow-primary/10">
+                <aside data-landing-reveal className="rounded-lg border border-primary/25 bg-card p-7 shadow-2xl shadow-primary/10">
                     <div className="mb-5 text-xs font-black uppercase tracking-[0.22em] text-primary">Mais escolhido</div>
                     <div className="flex items-end gap-1">
                         <span className="text-5xl font-black">{highlightedPlan.price}</span>
@@ -35,7 +35,7 @@ export function PricingHeroSection() {
                             </div>
                         ))}
                     </div>
-                    <Button className="h-12 w-full rounded-full font-black" style={{ background: primaryGradient }} asChild>
+                    <Button className="h-12 w-full rounded-lg font-black" style={{ background: primaryGradient }} asChild>
                         <Link href="/login">
                             Come\u00E7ar pelo {highlightedPlan.name}
                             <ArrowRight className="ml-2 h-4 w-4" />

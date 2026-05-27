@@ -1,10 +1,9 @@
 import { createInertiaApp } from "@inertiajs/react";
 import { createRoot } from "react-dom/client";
 import type { ComponentType } from "react";
-import "@fontsource/inter/400.css";
-import "@fontsource/inter/500.css";
-import "@fontsource/inter/600.css";
-import "@fontsource/inter/700.css";
+import "@fontsource/ubuntu/400.css";
+import "@fontsource/ubuntu/500.css";
+import "@fontsource/ubuntu/700.css";
 import "../css/app.css";
 import { ThemeProvider } from "@/components/theme/ThemeProvider";
 

@@ -23,6 +23,7 @@ type AppUser = {
     last_login_at?: string | null;
     name?: string;
     onboarded_at?: string | null;
+    show_tutorial?: boolean;
 };
 
 type SettingsPageProps = {
@@ -31,6 +32,7 @@ type SettingsPageProps = {
         created_at?: string | null;
         last_login_at?: string | null;
         onboarded_at?: string | null;
+        show_tutorial?: boolean;
     };
     user?: AppUser | null;
 };
@@ -115,10 +117,10 @@ export default function SettingsPage({ session, user }: SettingsPageProps) {
     return (
         <DashboardLayout user={user ?? undefined} title="Configurações">
             <div className="mx-auto flex max-w-6xl flex-col gap-6">
-                <section className="rounded-[2rem] border border-border/70 bg-card p-6 shadow-sm sm:p-8">
+                <section className="rounded-lg border border-border/70 bg-card p-6 shadow-sm sm:p-8">
                     <div className="flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
                         <div className="space-y-3">
-                            <Badge variant="secondary" className="w-fit rounded-full bg-primary/10 px-3 py-1 text-primary">
+                            <Badge variant="secondary" className="w-fit rounded-lg bg-primary/10 px-3 py-1 text-primary">
                                 Conta Sapphire
                             </Badge>
                             <div>
@@ -128,9 +130,9 @@ export default function SettingsPage({ session, user }: SettingsPageProps) {
                                 </p>
                             </div>
                         </div>
-                        <div className="rounded-2xl border border-border/60 bg-background p-4">
+                        <div className="rounded-lg border border-border/60 bg-background p-4">
                             <div className="flex items-center gap-3">
-                                <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-primary/10 text-primary">
+                                <div className="flex h-11 w-11 items-center justify-center rounded-lg bg-primary/10 text-primary">
                                     <UserRound className="h-5 w-5" />
                                 </div>
                                 <div>
@@ -143,9 +145,9 @@ export default function SettingsPage({ session, user }: SettingsPageProps) {
                 </section>
 
                 <div className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_360px]">
-                    <section id="profile" className="rounded-3xl border border-border/70 bg-card p-6 shadow-sm">
+                    <section id="profile" className="rounded-lg border border-border/70 bg-card p-6 shadow-sm">
                         <div className="mb-6 flex items-center gap-3">
-                            <div className="flex h-10 w-10 items-center justify-center rounded-2xl bg-primary/10 text-primary">
+                            <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary/10 text-primary">
                                 <UserRound className="h-5 w-5" />
                             </div>
                             <div>
@@ -187,7 +189,7 @@ export default function SettingsPage({ session, user }: SettingsPageProps) {
                     </section>
 
                     <aside className="space-y-6">
-                        <section className="rounded-3xl border border-border/70 bg-card p-5 shadow-sm">
+                        <section className="rounded-lg border border-border/70 bg-card p-5 shadow-sm">
                             <div className="mb-4 flex items-center gap-2">
                                 <ShieldCheck className="h-4 w-4 text-primary" />
                                 <h2 className="text-sm font-black">Sessão e segurança</h2>
@@ -197,9 +199,9 @@ export default function SettingsPage({ session, user }: SettingsPageProps) {
                                     ["Método", session?.auth_method ?? "E-mail e senha"],
                                     ["Último login", formatDate(session?.last_login_at)],
                                     ["Conta criada", formatDate(session?.created_at)],
-                                    ["Tutorial", session?.onboarded_at ? "Concluído" : "Pendente"],
+                                    ["Tutorial", session?.show_tutorial ? "Pendente" : "Concluído"],
                                 ].map(([label, value]) => (
-                                    <div key={label} className="flex items-center justify-between gap-4 rounded-2xl bg-muted/40 p-3">
+                                    <div key={label} className="flex items-center justify-between gap-4 rounded-lg bg-muted/40 p-3">
                                         <span className="text-muted-foreground">{label}</span>
                                         <span className="text-right font-bold">{value}</span>
                                     </div>
@@ -207,7 +209,7 @@ export default function SettingsPage({ session, user }: SettingsPageProps) {
                             </div>
                         </section>
 
-                        <section id="tutorial" className="rounded-3xl border border-primary/20 bg-primary/5 p-5">
+                        <section id="tutorial" className="rounded-lg border border-primary/20 bg-primary/5 p-5">
                             <Sparkles className="mb-3 h-5 w-5 text-primary" />
                             <h2 className="text-sm font-black">Tutorial do sistema</h2>
                             <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
@@ -221,9 +223,9 @@ export default function SettingsPage({ session, user }: SettingsPageProps) {
                     </aside>
                 </div>
 
-                <section className="rounded-3xl border border-border/70 bg-card p-6 shadow-sm">
+                <section className="rounded-lg border border-border/70 bg-card p-6 shadow-sm">
                     <div className="mb-5 flex items-center gap-3">
-                        <div className="flex h-10 w-10 items-center justify-center rounded-2xl bg-primary/10 text-primary">
+                        <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary/10 text-primary">
                             <MonitorCog className="h-5 w-5" />
                         </div>
                         <div>
@@ -244,21 +246,21 @@ export default function SettingsPage({ session, user }: SettingsPageProps) {
                                     type="button"
                                     onClick={() => savePreference(preference.key, !preference.enabled, preference.setter)}
                                     className={cn(
-                                        "rounded-3xl border p-5 text-left transition-all",
+                                        "rounded-lg border p-5 text-left transition-all",
                                         preference.enabled
                                             ? "border-primary/40 bg-primary/10"
                                             : "border-border/70 bg-background hover:border-primary/25",
                                     )}
                                 >
                                     <div className="mb-4 flex items-center justify-between gap-3">
-                                        <div className="flex h-10 w-10 items-center justify-center rounded-2xl bg-muted text-foreground">
+                                        <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-muted text-foreground">
                                             <Icon className="h-5 w-5" />
                                         </div>
                                         {preference.enabled && <CheckCircle2 className="h-5 w-5 text-primary" />}
                                     </div>
                                     <h3 className="text-sm font-black">{preference.title}</h3>
                                     <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{preference.description}</p>
-                                    <span className="mt-4 inline-flex rounded-full bg-muted px-2.5 py-1 text-xs font-bold text-muted-foreground">
+                                    <span className="mt-4 inline-flex rounded-lg bg-muted px-2.5 py-1 text-xs font-bold text-muted-foreground">
                                         {preference.enabled ? "Ativo" : "Inativo"}
                                     </span>
                                 </button>

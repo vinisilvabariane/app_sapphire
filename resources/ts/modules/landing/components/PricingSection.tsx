@@ -22,7 +22,7 @@ export function PricingSection() {
                         <div
                             data-landing-reveal
                             key={plan.name}
-                            className={`relative flex flex-col gap-6 rounded-2xl bg-card p-8 transition-all ${
+                            className={`relative flex flex-col gap-6 rounded-lg bg-card p-8 transition-all ${
                                 plan.highlighted
                                     ? "border-2 border-primary shadow-2xl shadow-primary/15"
                                     : "border border-border/60 hover:border-primary/30 hover:shadow-xl hover:shadow-primary/5"
@@ -30,7 +30,7 @@ export function PricingSection() {
                         >
                             {plan.highlighted && (
                                 <div className="absolute -top-4 left-1/2 -translate-x-1/2">
-                                    <span className="inline-flex rounded-full bg-primary px-4 py-1 text-xs font-bold text-white shadow-lg shadow-primary/30">
+                                    <span className="inline-flex rounded-lg bg-primary px-4 py-1 text-xs font-bold text-white shadow-lg shadow-primary/30">
                                         Mais popular
                                     </span>
                                 </div>

@@ -11,6 +11,7 @@ type AppUser = {
     last_login_at?: string | null;
     name?: string;
     onboarded_at?: string | null;
+    show_tutorial?: boolean;
 };
 
 type WorkspacesPageProps = {
@@ -138,10 +139,10 @@ export default function WorkspacesPage({ user }: WorkspacesPageProps) {
     return (
         <DashboardLayout user={user ?? undefined} title="Workspaces">
             <div className="mx-auto flex max-w-7xl flex-col gap-6">
-                <section className="rounded-[2rem] border border-border/70 bg-card p-6 shadow-sm sm:p-8">
+                <section className="rounded-lg border border-border/70 bg-card p-6 shadow-sm sm:p-8">
                     <div className="flex flex-col gap-5 lg:flex-row lg:items-end lg:justify-between">
                         <div className="max-w-2xl space-y-3">
-                            <Badge variant="secondary" className="w-fit rounded-full bg-primary/10 px-3 py-1 text-primary">
+                            <Badge variant="secondary" className="w-fit rounded-lg bg-primary/10 px-3 py-1 text-primary">
                                 SAP-BOARD
                             </Badge>
                             <h1 className="text-3xl font-black tracking-tight">Sprint Sapphire Core</h1>
@@ -155,7 +156,7 @@ export default function WorkspacesPage({ user }: WorkspacesPageProps) {
                                 ["Issues", issues.length],
                                 ["Alta prioridade", issues.filter((issue) => issue.priority === "Alta" && issue.status !== "done").length],
                             ].map(([label, value]) => (
-                                <div key={label} className="rounded-2xl border border-border/60 bg-background p-4">
+                                <div key={label} className="rounded-lg border border-border/60 bg-background p-4">
                                     <span className="text-xs font-bold uppercase tracking-wide text-muted-foreground">{label}</span>
                                     <div className="mt-2 text-2xl font-black">{value}</div>
                                 </div>
@@ -164,7 +165,7 @@ export default function WorkspacesPage({ user }: WorkspacesPageProps) {
                     </div>
                 </section>
 
-                <section className="rounded-3xl border border-border/70 bg-card p-4 shadow-sm">
+                <section className="rounded-lg border border-border/70 bg-card p-4 shadow-sm">
                     <div className="mb-4 flex flex-col gap-3 px-1 sm:flex-row sm:items-center sm:justify-between">
                         <div>
                             <h2 className="text-base font-black">Board do sprint</h2>
@@ -187,17 +188,17 @@ export default function WorkspacesPage({ user }: WorkspacesPageProps) {
                                     onDragOver={(event) => event.preventDefault()}
                                     onDrop={(event) => handleDrop(event, column.id)}
                                     className={cn(
-                                        "min-h-[520px] min-w-[280px] rounded-3xl border border-border/60 bg-muted/30 p-3 transition-colors",
+                                        "min-h-[520px] min-w-[280px] rounded-lg border border-border/60 bg-muted/30 p-3 transition-colors",
                                         draggingIssueId && "border-primary/30 bg-primary/5",
                                     )}
                                 >
-                                    <div className="mb-3 flex items-center justify-between rounded-2xl bg-background p-3">
+                                    <div className="mb-3 flex items-center justify-between rounded-lg bg-background p-3">
                                         <div className="flex items-center gap-3">
-                                            <span className={cn("h-2.5 w-2.5 rounded-full", column.accent)} />
+                                            <span className={cn("h-2.5 w-2.5 rounded-lg", column.accent)} />
                                             <Icon className="h-4 w-4 text-muted-foreground" />
                                             <h3 className="text-sm font-black">{column.title}</h3>
                                         </div>
-                                        <span className="rounded-full bg-muted px-2 py-0.5 text-xs font-black">{columnIssues.length}</span>
+                                        <span className="rounded-lg bg-muted px-2 py-0.5 text-xs font-black">{columnIssues.length}</span>
                                     </div>
 
                                     <div className="space-y-3">
@@ -207,7 +208,7 @@ export default function WorkspacesPage({ user }: WorkspacesPageProps) {
                                                 draggable
                                                 onDragEnd={() => setDraggingIssueId(null)}
                                                 onDragStart={(event) => handleDragStart(event, issue.id)}
-                                                className="rounded-2xl border border-border/70 bg-background p-4 shadow-sm transition-all hover:-translate-y-0.5 hover:border-primary/30 hover:shadow-md"
+                                                className="rounded-lg border border-border/70 bg-background p-4 shadow-sm transition-all hover:-translate-y-0.5 hover:border-primary/30 hover:shadow-md"
                                             >
                                                 <div className="mb-3 flex items-start justify-between gap-3">
                                                     <div>
@@ -239,7 +240,7 @@ export default function WorkspacesPage({ user }: WorkspacesPageProps) {
                                         ))}
 
                                         {columnIssues.length === 0 && (
-                                            <div className="rounded-2xl border border-dashed border-border/80 p-6 text-center text-xs text-muted-foreground">
+                                            <div className="rounded-lg border border-dashed border-border/80 p-6 text-center text-xs text-muted-foreground">
                                                 Solte uma issue aqui.
                                             </div>
                                         )}

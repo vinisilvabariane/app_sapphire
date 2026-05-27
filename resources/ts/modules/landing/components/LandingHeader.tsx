@@ -17,7 +17,7 @@ export function LandingHeader() {
                     <BrandMark />
                 </Link>
 
-                <nav className="hidden items-center justify-center gap-1 rounded-full border border-border/50 bg-muted/30 px-2 py-1.5 md:flex">
+                <nav className="hidden items-center justify-center gap-1 rounded-lg border border-border/50 bg-muted/30 px-2 py-1.5 md:flex">
                     {navItems.map((item) => {
                         const isActive = url === item.href;
 
@@ -25,7 +25,7 @@ export function LandingHeader() {
                             <Link
                                 key={item.href}
                                 href={item.href}
-                                className={`rounded-full px-3.5 py-1 text-sm transition-all hover:bg-background/70 hover:text-foreground ${
+                                className={`rounded-lg px-3.5 py-1 text-sm transition-all hover:bg-background/70 hover:text-foreground ${
                                     isActive ? "bg-background text-foreground shadow-sm" : "text-muted-foreground"
                                 }`}
                             >
@@ -43,7 +43,7 @@ export function LandingHeader() {
                     <Button
                         size="sm"
                         asChild
-                        className="h-9 rounded-full px-3.5 text-xs font-bold shadow-md shadow-primary/25 sm:px-4 sm:text-sm"
+                        className="h-9 rounded-lg px-3.5 text-xs font-bold shadow-md shadow-primary/25 sm:px-4 sm:text-sm"
                         style={{ background: primaryGradient }}
                     >
                         <Link href="/login" className="inline-flex items-center gap-1.5 whitespace-nowrap">

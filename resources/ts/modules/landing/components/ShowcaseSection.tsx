@@ -13,7 +13,7 @@ export function ShowcaseSection() {
 
             <div className="absolute inset-y-0 left-0 hidden w-1/2 items-center justify-center md:flex">
                 <div data-landing-reveal className="relative">
-                    <div className="absolute inset-0 scale-150 rounded-full bg-primary/20 blur-3xl" />
+                    <div className="absolute inset-0 scale-150 rounded-lg bg-primary/20 blur-3xl" />
                     <LogoMark className="relative h-56 w-56 drop-shadow-[0_34px_90px_rgba(91,163,232,0.36)] xl:h-72 xl:w-72" />
                 </div>
             </div>

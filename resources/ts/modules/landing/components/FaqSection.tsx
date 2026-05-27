@@ -22,12 +22,12 @@ export function FaqSection() {
                         <details
                             data-landing-reveal
                             key={faq.question}
-                            className="group rounded-2xl border border-border/70 bg-card p-6 shadow-sm transition-all open:border-primary/35 open:shadow-xl open:shadow-primary/10"
+                            className="group rounded-lg border border-border/70 bg-card p-6 shadow-sm transition-all open:border-primary/35 open:shadow-xl open:shadow-primary/10"
                             open={index === 0}
                         >
                             <summary className="flex cursor-pointer list-none items-start justify-between gap-5">
                                 <span className="flex min-w-0 gap-4">
-                                    <span className="mt-1 flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-xl bg-primary/10 text-primary">
+                                    <span className="mt-1 flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-lg bg-primary/10 text-primary">
                                         <HelpCircle className="h-5 w-5" />
                                     </span>
                                     <span className="text-xl font-black leading-snug">{faq.question}</span>

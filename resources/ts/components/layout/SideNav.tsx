@@ -2,10 +2,10 @@ import { useState } from "react";
 import { Link } from "@inertiajs/react";
 import {
     BarChart3,
+    Gem,
     LayoutGrid,
     Kanban,
     FileText,
-    Settings,
     ChevronLeft,
     ChevronRight,
 } from "lucide-react";
@@ -26,7 +26,6 @@ const navItems: NavItem[] = [
     { id: "workspaces", label: "Workspaces", href: "/workspaces", icon: Kanban, tag: "Jira" },
     { id: "analytics", label: "Analytics", href: "#", icon: BarChart3, disabled: true, tag: "Em breve" },
     { id: "docs", label: "Documentos", href: "#", icon: FileText, disabled: true, tag: "Em breve" },
-    { id: "settings", label: "Configurações", href: "/settings", icon: Settings, tag: "Conta" },
 ];
 
 type SideNavProps = {
@@ -53,20 +52,15 @@ export function SideNav({ currentPath }: SideNavProps) {
                 <Link href="/home" className="flex items-center gap-2 min-w-0 flex-1">
                     <LogoMark className="h-7 w-7" />
                     {!collapsed && (
-                        <span className="min-w-0">
-                            <span className="block truncate text-sm font-black tracking-tight text-sidebar-foreground">
-                                Sapphire
-                            </span>
-                            <span className="block truncate text-[11px] font-medium text-sidebar-foreground/45">
-                                Operating hub
-                            </span>
+                        <span className="block truncate text-sm font-black tracking-tight text-sidebar-foreground">
+                            Sapphire
                         </span>
                     )}
                 </Link>
                 <button
                     onClick={toggle}
                     title={collapsed ? "Expandir menu" : "Recolher menu"}
-                    className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full text-sidebar-foreground/50 transition-colors hover:bg-sidebar-accent hover:text-sidebar-foreground"
+                    className="flex h-7 w-7 shrink-0 items-center justify-center rounded-lg text-sidebar-foreground/50 transition-colors hover:bg-sidebar-accent hover:text-sidebar-foreground"
                 >
                     {collapsed ? (
                         <ChevronRight className="h-3.5 w-3.5" />
@@ -87,7 +81,7 @@ export function SideNav({ currentPath }: SideNavProps) {
                         <>
                             <span
                                 className={cn(
-                                    "flex h-8 w-8 shrink-0 items-center justify-center rounded-xl transition-colors",
+                                    "flex h-8 w-8 shrink-0 items-center justify-center rounded-lg transition-colors",
                                     active ? "bg-primary text-primary-foreground" : "bg-sidebar-accent/50",
                                 )}
                             >
@@ -101,7 +95,7 @@ export function SideNav({ currentPath }: SideNavProps) {
                                     {item.tag && (
                                         <span
                                             className={cn(
-                                                "rounded-full px-2 py-0.5 text-[10px] font-black",
+                                                "rounded-lg px-2 py-0.5 text-[10px] font-black",
                                                 active
                                                     ? "bg-primary/10 text-primary"
                                                     : "bg-sidebar-accent text-sidebar-foreground/45",
@@ -123,7 +117,7 @@ export function SideNav({ currentPath }: SideNavProps) {
                                 title={collapsed ? `${item.label} em breve` : undefined}
                                 disabled
                                 className={cn(
-                                    "flex w-full cursor-not-allowed items-center gap-3 rounded-2xl px-2 py-2 text-sm font-bold opacity-45",
+                                    "flex w-full cursor-not-allowed items-center gap-3 rounded-lg px-2 py-2 text-sm font-bold opacity-45",
                                     collapsed && "justify-center",
                                 )}
                             >
@@ -138,7 +132,7 @@ export function SideNav({ currentPath }: SideNavProps) {
                             href={item.href}
                             title={collapsed ? item.label : undefined}
                             className={cn(
-                                "relative flex items-center gap-3 rounded-2xl px-2 py-2 text-sm font-bold transition-colors whitespace-nowrap",
+                                "relative flex items-center gap-3 rounded-lg px-2 py-2 text-sm font-bold transition-colors whitespace-nowrap",
                                 "text-sidebar-foreground/65 hover:text-sidebar-foreground hover:bg-sidebar-accent",
                                 active &&
                                     "bg-sidebar-accent text-sidebar-foreground shadow-sm",
@@ -146,7 +140,7 @@ export function SideNav({ currentPath }: SideNavProps) {
                             )}
                         >
                             {active && !collapsed && (
-                                <span className="absolute left-0 top-1/2 h-7 w-1 -translate-y-1/2 rounded-r-full bg-primary" />
+                                <span className="absolute left-0 top-1/2 h-7 w-1 -translate-y-1/2 rounded-lg bg-primary" />
                             )}
                             {content}
                         </Link>
@@ -155,12 +149,15 @@ export function SideNav({ currentPath }: SideNavProps) {
             </nav>
 
             <div className="shrink-0 border-t border-sidebar-border p-3">
-                <div className={cn("rounded-2xl bg-sidebar-accent/60 p-3", collapsed && "px-2")}>
-                    <div className="mx-auto h-2 w-2 rounded-full bg-emerald-500" />
-                    {!collapsed && (
-                        <div className="mt-2 text-center">
-                            <p className="text-xs font-black text-sidebar-foreground">Sistema online</p>
-                            <p className="text-[11px] text-sidebar-foreground/45">JWT, tema e workspace ativos</p>
+                <div className={cn("rounded-lg bg-sidebar-accent/60 p-3 text-center", collapsed && "px-2")}>
+                    {collapsed ? (
+                        <Gem className="mx-auto h-5 w-5 text-sidebar-foreground/60" />
+                    ) : (
+                        <div>
+                            <p className="text-xs font-black text-sidebar-foreground">Sapphire OS</p>
+                            <p className="text-[11px] text-sidebar-foreground/45">
+                                Todos os direitos reservados.
+                            </p>
                         </div>
                     )}
                 </div>

@@ -4,10 +4,10 @@
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
-  --radius-sm: calc(var(--radius) - 4px);
-  --radius-md: calc(var(--radius) - 2px);
-  --radius-lg: var(--radius);
-  --radius-xl: calc(var(--radius) + 4px);
+  --radius-sm: 0.5rem;
+  --radius-md: 0.625rem;
+  --radius-lg: 0.75rem;
+  --radius-xl: 1rem;
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-card: var(--card);
@@ -42,7 +42,7 @@
 }
 
 :root {
-  --radius: 0.625rem;
+  --radius: 0.75rem;
   --background: oklch(1 0 0);
   --foreground: oklch(0.1 0 0);
   --card: oklch(0.99 0 0);
@@ -122,6 +122,7 @@
 
   body {
     @apply bg-background text-foreground;
+    font-family: "Ubuntu", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   }
 
   ::-webkit-scrollbar {
@@ -136,7 +137,7 @@
   ::-webkit-scrollbar-thumb {
     background: linear-gradient(180deg, #5ba3e8 0%, #285295 55%, #1a3a6e 100%);
     border: 2px solid transparent;
-    border-radius: 999px;
+    border-radius: 0.75rem;
     background-clip: padding-box;
   }
 

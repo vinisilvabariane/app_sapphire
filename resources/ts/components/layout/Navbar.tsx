@@ -46,7 +46,7 @@ export function Navbar({ user }: NavbarProps) {
                     <ThemeToggle />
                     <DropdownMenu>
                         <DropdownMenuTrigger asChild>
-                            <Button variant="ghost" className="h-8 w-8 rounded-full p-0">
+                            <Button variant="ghost" className="h-8 w-8 rounded-lg p-0">
                                 <Avatar className="h-8 w-8">
                                     <AvatarFallback className="text-xs">{initials}</AvatarFallback>
                                 </Avatar>
