@@ -31,6 +31,10 @@ type HubCard = {
     label?: string;
     name: string;
     status: "available" | "soon";
+    tone: {
+        accent: string;
+        icon: string;
+    };
 };
 
 const hubFilters: Array<{ id: HubCategory; label: string }> = [
@@ -49,6 +53,10 @@ const hubCards: HubCard[] = [
         icon: Kanban,
         label: "Abrir",
         status: "available",
+        tone: {
+            accent: "bg-emerald-500",
+            icon: "bg-emerald-500/12 text-emerald-700 dark:text-emerald-300",
+        },
     },
     {
         category: "analytics",
@@ -57,14 +65,23 @@ const hubCards: HubCard[] = [
         href: "#",
         icon: BarChart3,
         status: "soon",
+        tone: {
+            accent: "bg-amber-500",
+            icon: "bg-amber-500/12 text-amber-700 dark:text-amber-300",
+        },
     },
     {
         category: "knowledge",
         name: "Documentos",
-        description: "Base de conhecimento e processos.",
-        href: "#",
+        description: "Gere documentação de software com modelos guiados.",
+        href: "/documentos",
         icon: FileText,
-        status: "soon",
+        label: "Criar",
+        status: "available",
+        tone: {
+            accent: "bg-violet-500",
+            icon: "bg-violet-500/12 text-violet-700 dark:text-violet-300",
+        },
     },
 ];
 
@@ -131,7 +148,7 @@ function WelcomeTutorial({
 
                             return (
                                 <div key={item.name} className="flex gap-3 rounded-lg border p-3">
-                                    <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-muted">
+                                    <span className={cn("flex h-9 w-9 shrink-0 items-center justify-center rounded-lg", item.tone.icon)}>
                                         <Icon className="h-4 w-4" />
                                     </span>
                                     <div>
@@ -167,13 +184,14 @@ function HubModuleCard({ item }: { item: HubCard }) {
     const content = (
         <Card
             className={cn(
-                "h-full gap-0 rounded-lg transition-colors",
+                "relative h-full gap-0 overflow-hidden rounded-lg transition-colors",
                 available ? "hover:border-primary/40 hover:bg-muted/20" : "opacity-70",
             )}
         >
+            <span className={cn("absolute inset-x-0 top-0 h-1", item.tone.accent)} />
             <CardContent className="flex h-full flex-col p-5">
                 <div className="mb-6 flex items-start justify-between gap-4">
-                    <span className="flex h-10 w-10 items-center justify-center rounded-lg bg-muted text-foreground">
+                    <span className={cn("flex h-10 w-10 items-center justify-center rounded-lg", item.tone.icon)}>
                         <Icon className="h-5 w-5" />
                     </span>
                     <Badge variant={available ? "secondary" : "outline"} className="rounded-lg">
