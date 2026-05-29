@@ -6,46 +6,9 @@
             "runtime": "vercel-php@0.7.4"
         }
     },
-    "headers": [
-        {
-            "source": "/build/(.*).js",
-            "headers": [
-                {
-                    "key": "Content-Type",
-                    "value": "application/javascript; charset=utf-8"
-                }
-            ]
-        },
-        {
-            "source": "/build/(.*).css",
-            "headers": [
-                {
-                    "key": "Content-Type",
-                    "value": "text/css; charset=utf-8"
-                }
-            ]
-        }
-    ],
     "routes": [
         {
-            "src": "/build/(.*)",
-            "dest": "/public/build/$1"
-        },
-        {
-            "src": "/favicon.ico",
-            "dest": "/public/favicon.ico"
-        },
-        {
-            "src": "/favicon.png",
-            "dest": "/public/favicon.png"
-        },
-        {
-            "src": "/icon.png",
-            "dest": "/public/icon.png"
-        },
-        {
-            "src": "/robots.txt",
-            "dest": "/public/robots.txt"
+            "handle": "filesystem"
         },
         {
             "src": "/(.*)",
