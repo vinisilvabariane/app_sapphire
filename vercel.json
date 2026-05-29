@@ -1,25 +1,32 @@
 {
     "version": 2,
+    "buildCommand": "npm ci && npm run build",
     "functions": {
         "api/index.php": {
             "runtime": "vercel-php@0.7.4"
         }
     },
+    "headers": [
+        {
+            "source": "/build/(.*).js",
+            "headers": [
+                {
+                    "key": "Content-Type",
+                    "value": "application/javascript; charset=utf-8"
+                }
+            ]
+        },
+        {
+            "source": "/build/(.*).css",
+            "headers": [
+                {
+                    "key": "Content-Type",
+                    "value": "text/css; charset=utf-8"
+                }
+            ]
+        }
+    ],
     "routes": [
-        {
-            "src": "/build/(.*\\.js)",
-            "dest": "/public/build/$1",
-            "headers": {
-                "Content-Type": "application/javascript; charset=utf-8"
-            }
-        },
-        {
-            "src": "/build/(.*\\.css)",
-            "dest": "/public/build/$1",
-            "headers": {
-                "Content-Type": "text/css; charset=utf-8"
-            }
-        },
         {
             "src": "/build/(.*)",
             "dest": "/public/build/$1"
