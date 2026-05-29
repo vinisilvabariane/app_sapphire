@@ -7,6 +7,20 @@
     },
     "routes": [
         {
+            "src": "/build/(.*\\.js)",
+            "dest": "/public/build/$1",
+            "headers": {
+                "Content-Type": "application/javascript; charset=utf-8"
+            }
+        },
+        {
+            "src": "/build/(.*\\.css)",
+            "dest": "/public/build/$1",
+            "headers": {
+                "Content-Type": "text/css; charset=utf-8"
+            }
+        },
+        {
             "src": "/build/(.*)",
             "dest": "/public/build/$1"
         },
