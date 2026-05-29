@@ -46,7 +46,7 @@
         ],
         "vercel": [
             "npm ci",
-            "npm run build"
+            "npm run vercel:build"
         ],
         "dev": [
             "Composer\\Config::disableProcessTimeout",
